@@ -4,6 +4,7 @@ import { CategoryContext } from "../category/CategoryContext";
 import { NavLink } from "react-router-dom";
 import CompanySideBar from "../company/CompanySideBar";
 import Loading from "../Loading";
+import { getServerUrl } from "../helpers/helpers";
 
 const Container = styled.div``;
 
@@ -87,7 +88,7 @@ const CategoryTab = () => {
   useEffect(() => {
     let mounted = true;
 
-    fetch(`/api/get-items`)
+    fetch(`${getServerUrl()}/api/get-items`)
       .then((response) => response.json())
       .then((parse) => {
         if (parse.status === 400 || parse.status === 500) {

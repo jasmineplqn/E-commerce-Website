@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { NavLink } from "react-router-dom";
 import Loading from "../Loading";
+import { getServerUrl } from "../helpers/helpers";
 
 const Container = styled.div`
   margin-top: 1em;
@@ -34,7 +35,7 @@ const CompanySideBar = () => {
   useEffect(() => {
     let mounted = true;
 
-    fetch(`/api/get-companies`)
+    fetch(`${getServerUrl()}/api/get-companies`)
       .then((response) => response.json())
       .then((parse) => {
         if (parse.status === 400 || parse.status === 500) {

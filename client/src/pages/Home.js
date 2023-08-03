@@ -6,13 +6,14 @@ import AboutUs from "../components/about/AboutUs";
 import Home1 from "../assets/images/Home2.jpg";
 import BestSeller from "../components/product/BestSeller";
 import Loading from "../components/Loading";
+import { getServerUrl } from "../helpers/helpers";
 
 //home page
 const Home = () => {
   const [items, setItems] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/get-items`)
+    fetch(`${getServerUrl()}/api/get-items`)
       .then((response) => response.json())
       .then((parse) => {
         setItems(parse.items.slice(98, 104));

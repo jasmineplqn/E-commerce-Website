@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import Loading from "../components/Loading";
+import { getServerUrl } from "../helpers/helpers";
 
 //component displaying a single company page with its products
 
@@ -16,7 +17,7 @@ const Company = () => {
 
     //fetching company data
     const fetchCompanyData = async (companyId) => {
-      const response = await fetch(`/api/company/${params.companyId}`);
+      const response = await fetch(`${getServerUrl()}/api/company/${params.companyId}`);
       const data = await response.json();
       if (data.status === 400 || data.status === 500) {
         throw new Error(data.message);
@@ -30,7 +31,7 @@ const Company = () => {
 
     //fetching all the items that is made by the company
     const fetchAllItems = async (companyId) => {
-      const response = await fetch(`/api/get-items`);
+      const response = await fetch(`${getServerUrl()}/api/get-items`);
       const data = await response.json();
       if (data.status === 400 || data.status === 500) {
         throw new Error(data.message);

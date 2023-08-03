@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getServerUrl } from "../helpers/helpers";
 
 // display one product and its details
 const ProductDetails = () => {
@@ -17,7 +18,7 @@ const ProductDetails = () => {
     let mounted = true;
 
     const fetchItemData = async () => {
-      const response = await fetch(`/api/item/${params.itemId}`);
+      const response = await fetch(`${getServerUrl()}/api/item/${params.itemId}`);
       const data = await response.json();
       if (data.status === 400 || data.status === 500) {
         throw new Error(data.message);
@@ -30,7 +31,7 @@ const ProductDetails = () => {
     };
 
     const fetchCompanyData = async (companyId) => {
-      const response = await fetch(`/api/company/${companyId}`);
+      const response = await fetch(`${getServerUrl()}/api/company/${companyId}`);
       const data = await response.json();
       if (data.status === 400 || data.status === 500) {
         throw new Error(data.message);
@@ -53,7 +54,7 @@ const ProductDetails = () => {
     setStatus(null);
     setError(null);
 
-    fetch("/api/add-item-to-cart", {
+    fetch(`${getServerUrl()}/api/add-item-to-cart`, {
       method: "POST",
       headers: {
         Accept: "application/json",

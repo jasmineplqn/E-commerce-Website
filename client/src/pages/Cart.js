@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import { getServerUrl } from "../helpers/helpers";
 
 //cart logic that receives the cart items from backend , deletes them , or post them using the checkout button
 const Cart = () => {
@@ -16,7 +17,7 @@ const Cart = () => {
 
   //fetching cart items
   const fetchCartItems = () => {
-    fetch("/api/cart")
+    fetch(`${getServerUrl()}/api/cart`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -39,7 +40,7 @@ const Cart = () => {
   //fetching cart items details such as price
   const fetchItemsDetails = (items) => {
     const itemDetailsPromises = items.map((item) => {
-      return fetch(`/api/item/${item._id}`)
+      return fetch(`${getServerUrl()}/api/item/${item._id}`)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -107,7 +108,7 @@ const Cart = () => {
 
   const handleCheckout = () => {
     // Perform post request to submit the cartItems for checkout
-    fetch("/api/purchase-item", {
+    fetch(`${getServerUrl()}/api/purchase-item`, {
       method: "POST",
       body: JSON.stringify(cartItems),
       headers: {
@@ -131,7 +132,7 @@ const Cart = () => {
 
   const handleDeleteItem = (itemId) => {
     // Perform delete request to remove a single item from the cart
-    fetch(`/api/delete-item/${itemId}`, {
+    fetch(`${getServerUrl()}/api/delete-item/${itemId}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -152,7 +153,7 @@ const Cart = () => {
 
   const handleEmptyCart = () => {
     // Perform delete request to remove all items from the cart
-    fetch("/api/delete-AllItems", {
+    fetch(`${getServerUrl()}/api/delete-AllItems`, {
       method: "DELETE",
     })
       .then((response) => {

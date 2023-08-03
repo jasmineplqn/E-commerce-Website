@@ -36,8 +36,6 @@ express()
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
 
-  // REST endpoints?.
-
   // get all the items
   .get("/api/get-items", getItems)
   // get one item and its details

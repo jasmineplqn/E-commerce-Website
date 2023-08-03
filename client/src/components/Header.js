@@ -4,6 +4,7 @@ import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Logo from "../assets/images/text-logo.png";
+import { getServerUrl } from "../helpers/helpers";
 
 //component displaying a sidescroll with company logo that navigates to a company page
 
@@ -24,7 +25,7 @@ const Header = () => {
   const limit = matchedItems.slice(0, 7);
 
   useEffect(() => {
-    fetch(`/api/get-items`)
+    fetch(`${getServerUrl()}/api/get-items`)
       .then((response) => response.json())
       .then((parse) => {
         setAllItems(parse.items);

@@ -16,10 +16,15 @@ const { getPurchases } = require("./handlers/purchase/getPurchases");
 const { getPurchase } = require("./handlers/purchase/getPurchase");
 const { updateItemQuantityCart } = require("./handlers/cart/UpdateItemQuantityCart");
 
-const PORT = 4000;
+const { PORT, ENV} = process.env;
 
 express()
   .use(function (req, res, next) {
+    if(ENV && ENV === "PROD") {
+      res.header("Access-Control-Allow-Origin", "https://skintech-report.vercel.app");
+    }  else {
+      res.header("Access-Control-Allow-Origin", `http://localhost:${PORT}`);
+    }  
     res.header(
       "Access-Control-Allow-Methods",
       "OPTIONS, HEAD, GET, PUT, POST, DELETE"

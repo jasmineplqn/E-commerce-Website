@@ -21,7 +21,7 @@ const { PORT, ENV} = process.env;
 express()
   .use(function (req, res, next) {
     if(ENV && ENV === "PROD") {
-      res.header("Access-Control-Allow-Origin", "https://skintech-report.vercel.app");
+      res.header("Access-Control-Allow-Origin", "https://gadgetgo.vercel.app/");
     }  else {
       res.header("Access-Control-Allow-Origin", `http://localhost:${PORT}`);
     }  

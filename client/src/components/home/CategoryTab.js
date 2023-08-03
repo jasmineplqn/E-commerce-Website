@@ -4,7 +4,7 @@ import { CategoryContext } from "../category/CategoryContext";
 import { NavLink } from "react-router-dom";
 import CompanySideBar from "../company/CompanySideBar";
 import Loading from "../Loading";
-import { getServerUrl } from "../helpers/helpers";
+import { getServerUrl } from "../../helpers/helpers";
 
 const Container = styled.div``;
 

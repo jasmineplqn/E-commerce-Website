@@ -34,7 +34,7 @@ const AboutPage = () => {
             <p>Jasmine Poliquin</p>
           </Box>
         </NavLinks>
-        <NavLinks target="#" to="https://gab-go-portfolio.vercel.app/">
+        <NavLinks target="#" to="https://portfolio-gabgo51.vercel.app/">
           <Box>
             <TeamImage src={Gabriel} />
             <p>Gabriel Gosselin</p>
